@@ -1,0 +1,25 @@
+import streamlit as st
+
+st.title("Registration Form")
+
+name = st.text_input("Enter your Name")
+email = st.text_input("Enter your Email")
+password = st.text_input("Enter Password", type="password")
+confirm_password = st.text_input("Confirm Password", type="password")
+
+gender = st.selectbox("Select Gender", ["Male", "Female", "Other"])
+age = st.number_input("Enter Age", min_value=1, max_value=100)
+
+if st.button("Register"):
+
+    if name == "" or email == "" or password == "" or confirm_password == "":
+        st.error("Please fill all the fields.")
+
+    elif "@" not in email:
+        st.error("Please enter a valid email.")
+
+    elif password != confirm_password:
+        st.error("Passwords do not match.")
+
+    else:
+        st.success("Registration Successful! 🎉")
